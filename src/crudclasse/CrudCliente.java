@@ -1,7 +1,7 @@
 package crudclasse;
 
 
-import java.util.List;
+
 import redis.clients.jedis.Jedis; 
 import classmodelos.ClienteJava;
 import java.util.Scanner;
@@ -14,27 +14,33 @@ public class CrudCliente {
     
     Scanner scan = new Scanner(System.in);
     
-    Jedis jedis = new Jedis("localhost"); 
+    Jedis jecliente = new Jedis("localhost"); 
     
     
-    public void Adicionar(){
+    public void adicionarCliente(){
         System.out.print("Digite a chave :: -- ");
         client.setChave(scan.next());
         System.out.print("Digite o nome  :: -- ");
         client.setNome(scan.next());
-        jedis.set(client.getChave() , client.getNome());
+        jecliente.set(client.getChave() , client.getNome());
     }
-    public void Mostrar(){
+    public void mostrarCliente(){
         System.out.print("Digite a chave para mostrar :: -- ");
         client.setChave(scan.next());
-        System.out.println("A Chave "+ client.getChave() +" É do cliente "+ jedis.get(client.getChave()));
+        System.out.println("A Chave "+ client.getChave() +" É do cliente "+ jecliente.get(client.getChave()));
     }
-    public void Update(){
+    public void updateCliente(){
         System.out.print("Digite a chava que deseja alterar  :: -- ");
         client.setChave(scan.next());
         System.out.println("Digite o nome que deseja alterar :: -- ");
         client.setNome(scan.next());
-        jedis.set(client.getChave() , client.getNome());
+        jecliente.set(client.getChave() , client.getNome());
+    }
+    public void deleteCliente(){
+        System.out.println("Digite a Chave que deseja deletar :: -- ");
+        client.setChave(scan.next());
+        
+        jecliente.del(client.getChave());
     }
 
     
