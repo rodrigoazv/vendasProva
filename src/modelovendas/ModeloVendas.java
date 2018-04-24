@@ -27,6 +27,7 @@ public class ModeloVendas {
             System.out.println("5 Para Adicionar produto - ");
             System.out.println("6 Para ver dados produto -");
             System.out.println("7 Para ver produto -");
+            System.out.println("8 para deletar o produto");
             x = scan.nextInt();
             switch(x){
                     case 1:
@@ -49,6 +50,9 @@ public class ModeloVendas {
                         break;
                     case 7:
                         produto.updateProduto();
+                        break;
+                    case 8:
+                        produto.deleteProduto();
                         break;
                         
         }

@@ -44,7 +44,7 @@ public class CrudProduto {
         } 
     }
     public void updateProduto(){
-        System.out.println("Digite o codigo do produto que deseja alterar:: - ");
+        System.out.print("Digite o codigo do produto que deseja alterar:: - ");
         produt.setCodigo(scan.nextInt());
         System.out.println("<< DADOS >>");
         List<String> list = jeproduto.lrange(Integer.toString(produt.getCodigo()), 0 ,2); 
@@ -59,14 +59,19 @@ public class CrudProduto {
             System.out.println("Nome::                    --"+list.get(i));
             i++;
         } 
-        System.out.println("Alterar valor      -:");
+        System.out.print("Alterar valor      -:");
         produt.setValorU(scan.nextFloat());
-        System.out.println("Alterar Quantidade -:");
+        System.out.print("Alterar Quantidade -:");
         produt.setQnt(scan.nextInt());
-        System.out.println("Alterar nome       -:");
+        System.out.print("Alterar nome       -:");
         produt.setNome(scan.next());
         jeproduto.lpush(Integer.toString(produt.getCodigo()), produt.getNome(), Integer.toString(produt.getQnt()), Float.toString(produt.getValorU()));
         
+    }
+    public void deleteProduto(){
+        System.out.print("Digite o codigo do produto que deseja deletar -:");
+        produt.setCodigo(scan.nextInt());
+        jeproduto.del(Integer.toString(produt.getCodigo()));        
     }
     
 }
