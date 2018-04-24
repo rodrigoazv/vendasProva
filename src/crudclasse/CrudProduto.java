@@ -43,5 +43,30 @@ public class CrudProduto {
             System.out.println("Valor para comprar todos  --"+ p1*p2);
         } 
     }
+    public void updateProduto(){
+        System.out.println("Digite o codigo do produto que deseja alterar:: - ");
+        produt.setCodigo(scan.nextInt());
+        System.out.println("<< DADOS >>");
+        List<String> list = jeproduto.lrange(Integer.toString(produt.getCodigo()), 0 ,2); 
+        int i = 0;
+        while(i<list.size()) { 
+            System.out.println("Valor::                   --"+list.get(i)); 
+            float p1=Float.parseFloat(list.get(i));
+            i++;
+            System.out.println("Quantidade::              --"+list.get(i));
+            float p2=Float.parseFloat(list.get(i));
+            i++;
+            System.out.println("Nome::                    --"+list.get(i));
+            i++;
+        } 
+        System.out.println("Alterar valor      -:");
+        produt.setValorU(scan.nextFloat());
+        System.out.println("Alterar Quantidade -:");
+        produt.setQnt(scan.nextInt());
+        System.out.println("Alterar nome       -:");
+        produt.setNome(scan.next());
+        jeproduto.lpush(Integer.toString(produt.getCodigo()), produt.getNome(), Integer.toString(produt.getQnt()), Float.toString(produt.getValorU()));
+        
+    }
     
 }
