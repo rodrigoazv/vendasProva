@@ -10,9 +10,9 @@ public class ModeloVendas {
   public static void main(String[] args) { 
     
     
-    CrudCliente cliente = new CrudCliente();
+    Valida valFinal = new Valida();
     
-    cliente.mostrarCliente();
+    valFinal.val();
     //FINAL INSTANCIA CRUD
      
   

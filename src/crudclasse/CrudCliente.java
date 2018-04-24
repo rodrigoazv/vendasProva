@@ -32,13 +32,10 @@ public class CrudCliente {
         }
     }
     public void mostrarCliente(){
-        List<String> list =  new ArrayList<String>(jecliente.keys("*")); 
-      
-        for(int i = 0; i<list.size(); i++) { 
-         
-         
-         System.out.println("A Chave "+ list.get(i) +" É do cliente ");
-        } 
+        System.out.print("Digite a chave para mostrar :: -- ");
+        client.setChave(scan.next());
+        
+        System.out.println("A Chave "+ client.getChave() +" É do cliente "+ jecliente.get(client.getChave())); 
         
     }
     public void updateCliente(){

@@ -15,7 +15,7 @@ public class CrudProduto {
     Jedis jeproduto = new Jedis("localhost");
     
     public void adicionarProduto(){
-        System.out.print("Digite o codigo do produto :: - ");
+        System.out.print("Digite o codigo do produto [5 DIGITOS[numeros] :: - ");
         produt.setCodigo(scan.nextInt());
         System.out.print("Digite o nome do produto :: - ");
         produt.setNome(scan.next());
@@ -27,17 +27,27 @@ public class CrudProduto {
 
         jeproduto.lpush(Integer.toString(produt.getCodigo()), produt.getNome() , Integer.toString(produt.getQnt()) , Float.toString(produt.getValorU()));
     }
-    public void verProduto(){
-        //System.out.println("Digite o codigo do produto : - ");
-        //produt.setCodigo(scan.nextInt());
-        
-        List<String> list =  new ArrayList<String>(jeproduto.keys("*")); 
-      
-        for(int i = 0; i<list.size(); i++) { 
-         System.out.println("CHAVES DE PRODUTO:: "+list.get(i)); 
-        }  
-        
+   public void verProduto(){
+        System.out.println("Digite o codigo do produto : - ");
+        produt.setCodigo(scan.nextInt());
+        List<String> list = jeproduto.lrange(Integer.toString(produt.getCodigo()), 0 ,2); 
+        int i = 0;
+        while(i<list.size()) { 
+            System.out.println("Valor::                   --"+list.get(i)); 
+            float p1=Float.parseFloat(list.get(i));
+            i++;
+            System.out.println("Quantidade::              --"+list.get(i));
+            float p2=Float.parseFloat(list.get(i));
+            i++;
+            System.out.println("Nome::                    --"+list.get(i));
+            i++;
+            System.out.println("Valor para comprar todos  --"+ p1*p2);
+        } 
     }
+    
+
+
+
     public void updateProduto(){
         System.out.print("Digite o codigo do produto que deseja alterar:: - ");
         produt.setCodigo(scan.nextInt());
