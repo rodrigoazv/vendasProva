@@ -7,6 +7,7 @@ import crudclasse.CrudCliente;
 public class ClienteJava {
     private String      nome;
     private String      chave;
+    
 
     public String getChave() {
         return chave;

@@ -1,11 +1,16 @@
 package classmodelos;
 
 public class ProdutoJava {
+    
+
+    
     private int         codigo;
     private String      nome;
     private int         qnt;
     private float       valorU;
-
+    
+    
+    
     public int getCodigo() {
         return codigo;
     }

@@ -4,6 +4,8 @@ package crudclasse;
 
 import redis.clients.jedis.Jedis; 
 import classmodelos.ClienteJava;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -20,14 +22,24 @@ public class CrudCliente {
     public void adicionarCliente(){
         System.out.print("Digite a chave :: -- ");
         client.setChave(scan.next());
-        System.out.print("Digite o nome  :: -- ");
-        client.setNome(scan.next());
-        jecliente.set(client.getChave() , client.getNome());
+        if(jecliente.get(client.getChave()) == null){
+            System.out.print("Digite o nome  :: -- ");
+            client.setNome(scan.next());
+            jecliente.set(client.getChave() , client.getNome());
+        }
+        else{
+            System.out.println("Chave em uso, tente outra!");
+        }
     }
     public void mostrarCliente(){
-        System.out.print("Digite a chave para mostrar :: -- ");
-        client.setChave(scan.next());
-        System.out.println("A Chave "+ client.getChave() +" É do cliente "+ jecliente.get(client.getChave()));
+        List<String> list =  new ArrayList<String>(jecliente.keys("*")); 
+      
+        for(int i = 0; i<list.size(); i++) { 
+         
+         
+         System.out.println("A Chave "+ list.get(i) +" É do cliente ");
+        } 
+        
     }
     public void updateCliente(){
         System.out.print("Digite a chava que deseja alterar  :: -- ");
@@ -41,6 +53,20 @@ public class CrudCliente {
         client.setChave(scan.next());
         
         jecliente.del(client.getChave());
+    }
+    public boolean validaCliente(){
+        System.out.println("Digite a sua chave");
+        client.setChave(scan.next());
+        System.out.println("Digite seu nome ");
+        client.setNome(scan.next());
+        if(jecliente.get(client.getChave()).equals(client.getNome())){
+            System.out.println("OK !");
+            return true;
+        }
+        else{
+            System.out.println("ERRO!");
+            return false;
+        }
     }
 
     
