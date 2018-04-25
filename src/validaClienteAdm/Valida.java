@@ -4,6 +4,7 @@ import java.util.Scanner;
 import crudclasse.CrudFuncionario;
 import crudclasse.CrudCliente;
 import crudclasse.CrudProduto;
+import java.util.Date;
 
 public class Valida {
 
@@ -12,6 +13,8 @@ public class Valida {
     int x = -1;
 
     Scanner scan = new Scanner(System.in);
+    Date hora = new Date();
+    
 
     //INICIO INSTANCIA CRUD
     CrudCliente cliente = new CrudCliente();
@@ -45,6 +48,11 @@ public class Valida {
                                 System.out.println(cli + " é esse o produto [1]SIM || [2]NÃO?");
                                 valproduto = scan.nextInt();
                                 if(valproduto==1){
+                                    System.out.println("<< CUPOM >>");
+                                    System.out.println("Cliente - "+cli);
+                                    System.out.println("Caixa   - "+func);
+                                    
+                                    System.out.println(hora.getTime());
                                     
                                 }
                                 else if (valproduto ==2){
