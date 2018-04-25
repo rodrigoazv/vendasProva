@@ -3,11 +3,10 @@ package classmodelos;
 import modelovendas.ModeloVendas;
 import crudclasse.CrudCliente;
 
-
 public class ClienteJava {
-    private String      nome;
-    private String      chave;
-    
+
+    private String nome;
+    private String chave;
 
     public String getChave() {
         return chave;
@@ -24,8 +23,5 @@ public class ClienteJava {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-  
-    
-    
+
 }

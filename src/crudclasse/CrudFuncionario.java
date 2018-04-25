@@ -48,6 +48,12 @@ public class CrudFuncionario {
             return false;
         }
     }
+    public String retFunc(String chave){
+        
+            funcionario.setChave(chave);
+            return jefuncionario.get(funcionario.getChave());
+            
+        }
     
     
 }

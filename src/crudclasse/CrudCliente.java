@@ -26,6 +26,7 @@ public class CrudCliente {
             System.out.print("Digite o nome  :: -- ");
             client.setNome(scan.next());
             jecliente.set(client.getChave() , client.getNome());
+            
         }
         else{
             System.out.println("Chave em uso, tente outra!");
@@ -64,7 +65,16 @@ public class CrudCliente {
             System.out.println("ERRO!");
             return false;
         }
+        
+        
+                
     }
+    public String retCli(String chave){
+        
+            client.setChave(chave);
+            return jecliente.get(client.getChave());
+            
+        }
 
     
     
